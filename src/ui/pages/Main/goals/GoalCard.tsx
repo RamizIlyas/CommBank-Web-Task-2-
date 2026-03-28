@@ -8,6 +8,8 @@ import {
   setType as setTypeRedux
 } from '../../../../store/modalSlice'
 import { Card } from '../../../components/Card'
+import GoalIcon from '../../../features/goalmanager/GoalIcon'
+import Icon from '@material-ui/core/Icon/Icon'
 
 type Props = { id: string }
 
@@ -22,13 +24,17 @@ export default function GoalCard(props: Props) {
     dispatch(setTypeRedux('Goal'))
     dispatch(setIsOpenRedux(true))
   }
+  const icon = styled.h1`
+    font-size: 4rem;
+  `
 
   const asLocaleDateString = (date: Date) => new Date(date).toLocaleDateString()
 
   return (
     <Container key={goal.id} onClick={onClick}>
       <TargetAmount>${goal.targetAmount}</TargetAmount>
-      <TargetDate>{asLocaleDateString(goal.targetDate)}</TargetDate>
+      <TargetDate>{asLocaleDateString(goal.targetDate)}</TargetDate>  
+      <Icon>{goal.icon}</Icon>
     </Container>
   )
 }
